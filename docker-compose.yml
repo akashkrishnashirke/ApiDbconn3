@@ -1,0 +1,76 @@
+version: "3.8"
+
+
+volumes:
+  postgres_data:
+  STATIC_ROOT:
+  #HOST_STATIC_ROOT:
+services:
+  django:
+    build: .
+    container_name: django_container1
+    command: ./start-dev.sh
+    #command: python manage.py runserver 0.0.0.0:8000
+    #env_file:
+      #- ./postgres/.env
+    volumes:
+      - .:/usr/src/app
+      - postgres_data:/var/lib/postgresql/data            # add this volumes
+      - STATIC_ROOT:/var/www/static
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pgdb
+
+  pgdb:
+    image: postgres
+    container_name: pgdb
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+##  pgdb:
+#    restart: always
+#    build:
+#      context: ./postgres
+#      dockerfile:  Dockerfile
+#    volumes:
+#      - ./postgres:/var/lib/postgresql/data
+#    env_file:
+#      - ./postgres/.env
+#    container_name: pgdb
+
+
+#version: "3.8"
+#services:
+#  django:
+#    build: .
+#    container_name: django_container1
+#    command: python manage.py runserver 0.0.0.0:8000
+#    volumes:
+#      - .:/usr/src/app
+#    ports:
+#      - "8000:8000"
+#    depends_on:
+#      - pgdb
+#  pgdb:
+#    image: postgres
+#    container_name: pgdb
+#    environment:
+#      - POSTGRES_DB=postgres
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
+#
+
+
+
+
+
+
+
+
+
+
+
+
