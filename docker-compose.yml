@@ -9,8 +9,8 @@ services:
   django:
     build: .
     container_name: django_container1
-    #command: ./start-dev.sh
-    command: python manage.py runserver 0.0.0.0:8000
+    command: ./start-dev.sh
+    #command: python manage.py runserver 0.0.0.0:8000
     #env_file:
       #- ./postgres/.env
     volumes:
