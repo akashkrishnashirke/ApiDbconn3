@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+##!/bin/sh
 ###!/bin/bash
 
 python manage.py migrate
