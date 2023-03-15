@@ -12,7 +12,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requrement.txt
 
 COPY start-dev.sh start-dev.sh
-RUN chmod +x /start-dev.sh
+RUN chmod u+rwx /start-dev.sh
 
 WORKDIR /usr/src/app
 
