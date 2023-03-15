@@ -13,7 +13,9 @@ RUN pip install --upgrade pip
 RUN pip install -r requrement.txt
 
 COPY start-dev.sh start-dev.sh
-RUN chmod a+rwx /start-dev.sh
+#RUN chmod a+rwx /start-dev.sh
+RUN chmod u+x,g+x,o+x /start-dev.sh
+
 
 WORKDIR /usr/src/app
 
