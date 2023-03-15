@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+###!/bin/bash
 
 python manage.py migrate
 python manage.py collectstatic --noinput
